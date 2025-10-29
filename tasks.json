@@ -1,0 +1,16 @@
+[
+  {
+    "id": 2,
+    "title": "Read book",
+    "description": "Read 30 pages of Clean Code",
+    "status": "in-progress",
+    "createdAt": "2025-10-29T16:46:00.923Z"
+  },
+  {
+    "id": 3,
+    "title": "Do homework",
+    "description": "Finish math exercises",
+    "status": "pending",
+    "createdAt": "2025-10-29T16:50:19.815Z"
+  }
+]

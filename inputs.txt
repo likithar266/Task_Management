@@ -1,0 +1,129 @@
+TASK MANAGEMENT 
+--------------------------------
+
+# AUTH
+
+1) Register
+Method: POST
+URL: http://localhost:5000/auth/register
+Headers:
+  Content-Type: application/json
+Body:
+{
+  "username": "likitha",
+  "password": "abc123"
+}
+
+2) Login
+Method: POST
+URL: http://localhost:5000/auth/login
+Headers:
+  Content-Type: application/json
+Body:
+{
+  "username": "likitha",
+  "password": "abc123"
+}
+
+
+# TASKS (CRUD)
+
+3) Create task
+Method: POST
+URL: http://localhost:5000/tasks
+Headers:
+  Content-Type: application/json
+  Authorization: Bearer <token_here>
+Body:
+{
+  "title": "Finish assignment",
+  "description": "Complete REST API project",
+  "status": "pending"
+}
+
+4) Get all tasks
+Method: GET
+URL: http://localhost:5000/tasks
+
+5) Get all tasks - filter
+Method: GET
+URL: http://localhost:5000/tasks?status=pending
+
+6) Get all tasks - sort asc
+Method: GET
+URL: http://localhost:5000/tasks?sort=desc
+
+7) Get all tasks - filter + sort desc
+Method: GET
+URL: http://localhost:5000/tasks?status=pending&sort=desc
+
+8) Get single task
+Method: GET
+URL: http://localhost:5000/tasks/1
+
+9) Update task (protected)
+Method: PUT
+URL: http://localhost:5000/tasks/1
+Headers:
+  Content-Type: application/json
+  Authorization: Bearer <paste_token_here>
+Body:
+{
+  "title": "Finish assignment - updated",
+  "description": "Add error handling and persistence",
+  "status": "in-progress"
+}
+
+10) Delete task (protected)
+Method: DELETE
+URL: http://localhost:5000/tasks/1
+Headers:
+  Authorization: Bearer <token_here>
+
+
+# ERROR TESTS
+
+11) Create task with missing fields (should 400)
+Method: POST
+URL: http://localhost:5000/tasks
+Headers:
+  Content-Type: application/json
+  Authorization: Bearer <token_here>
+Body:
+{
+  "title": "Only title"
+}
+
+12) Create task with invalid status (should 400)
+Method: POST
+URL: http://localhost:5000/tasks
+Headers:
+  Content-Type: application/json
+  Authorization: Bearer <token_here>
+Body:
+{
+  "title": "Bad status test",
+  "description": "Testing invalid status",
+  "status": "done"
+}
+
+13) Get non-existent task
+Method: GET
+URL: http://localhost:5000/tasks/999
+
+14) Update non-existent task
+Method: PUT
+URL: http://localhost:5000/tasks/999
+Headers:
+  Content-Type: application/json
+  Authorization: Bearer <token_here>
+Body:
+{
+  "title": "Non-existent update"
+}
+
+15) Delete non-existent task
+Method: DELETE
+URL: http://localhost:5000/tasks/999
+Headers:
+  Authorization: Bearer <token_here>
